@@ -1,0 +1,3 @@
+all:
+  javascripts: []
+  stylesheets: [/evePromoCodePlugin/css/campaigns.css]

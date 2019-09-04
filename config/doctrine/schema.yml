@@ -1,0 +1,47 @@
+
+PromoCampaign:
+  actAs:
+    Timestampable: ~
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+      unique: true
+    expiration:
+      type: timestamp
+    card_type_id:
+      type: integer
+    codes_count:
+      type: integer
+      default: 0
+  relations:
+    MemberCardType:
+      foreignType: one
+      onDelete: SET NULL
+      foreignAlias: PromoCampaigns
+      local: card_type_id
+
+PromoCode:
+  actAs:
+    Timestampable: ~
+  columns:
+    code:
+      type: string(255)
+      notnull: true
+      unique: true
+    campaign_id:
+      type: integer
+      notnull: true
+    account_id:
+      type: integer
+    activation_date:
+      type: timestamp
+  relations:
+    Account:
+      class: Contact
+      foreignAlias: PromoCodes
+      local: account_id
+    PromoCampaign:
+      foreignAlias: PromoCodes
+      local: campaign_id
+      onDelete: CASCADE

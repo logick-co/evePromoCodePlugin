@@ -1,0 +1,28 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           PromoCampaign
+    theme:                 jroller
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          pc_campaigns
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions:
+      fields:
+        expiration: { label: Expire at }
+      list:
+        display: [name, expiration, MemberCardType]
+      filter: ~
+      form: ~
+      new:
+        title: New Campaign
+      edit: ~
+      show:
+        display:
+          Campaign: [name, expiration, MemberCardType]
+          Codes:    [_show_promo_codes]

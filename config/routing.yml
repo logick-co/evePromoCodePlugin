@@ -1,0 +1,12 @@
+##
+## BACKEND
+##
+
+pc_campaigns:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                PromoCampaign
+    module:               pcCampaigns
+    prefix_path:          /promo_campaigns
+    column:               id
+    with_wildcard_routes: true

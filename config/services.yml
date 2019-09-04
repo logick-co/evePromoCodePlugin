@@ -1,0 +1,10 @@
+# config/services.yml
+dev:
+  parameters:
+
+all:
+  parameters:
+
+  services:
+    campaign_service:
+      class: CampaignService
