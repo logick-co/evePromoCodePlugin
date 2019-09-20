@@ -9,17 +9,29 @@ PromoCampaign:
       unique: true
     expiration:
       type: timestamp
+      notnull: true
     card_type_id:
       type: integer
+      notnull: true
+    card_price_id:
+      type: integer
+      notnull: true
     codes_count:
       type: integer
       default: 0
+      notnull: true
   relations:
     MemberCardType:
       foreignType: one
       onDelete: SET NULL
       foreignAlias: PromoCampaigns
       local: card_type_id
+    Price:
+      foreignType: one
+      onDelete: SET NULL
+      foreignAlias: PromoCampaigns
+      local: card_price_id
+      
 
 PromoCode:
   actAs:

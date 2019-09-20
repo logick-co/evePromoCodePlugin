@@ -1,3 +1,15 @@
+
+pc_campaigns_activate:
+  url: /api/v2/carts/:id/promocodes/activate
+  class: sfRequestRoute
+  param: { module: pcPromocodes, action: activate }
+  options:
+    credentials: tck-onlinesales-api-cart-items-edit
+    #secure: false
+  requirements:
+    id: \d+
+    sf_method: [POST]
+
 ##
 ## BACKEND
 ##

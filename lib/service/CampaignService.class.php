@@ -2,6 +2,50 @@
 
 class CampaignService
 {
+  public function activateCode(PromoCode $code, Contact $account)
+  {
+    $code->activation_date = date('Y-m-d H:i:s');
+    $code->Account = $account;
+    $code->save();
+    
+    return $code;
+  }
+  
+  public function checkCodeValidity($code)
+  {
+    $code_exists = Doctrine::getTable('PromoCode')->createQuery('co')
+      ->innerJoin('co.PromoCampaign pc')
+      ->andWhere('co.code = ?', $code)
+      ->andWhere('pc.expiration > now()')
+      ->andWhere('pc.card_type_id IS NOT NULL')
+      ->andWhere('co.activation_date IS NULL')
+      ->andWhere('co.account_id IS NULL')
+      ->fetchOne();
+    
+    return $code_exists;
+  }
+
+  public function addMemberCard(Transaction $transaction, PromoCampaign $campaign)
+  {
+    $card = new MemberCard;
+    $card->transaction_id = $transaction->id;
+    $card->member_card_type_id = $campaign->card_type_id;
+    $card->contact_id = $transaction->contact_id;
+    $card->active = false;
+    $card->detail = $campaign->name;
+    
+    $bp = new BoughtProduct;
+    $bp->Declination = $campaign->MemberCardType->ProductDeclination;
+    $bp->Price = $campaign->Price;
+    $bp->Transaction = $transaction;
+    $bp->Transaction->contact_id = $transaction->contact_id;
+    
+    $card->BoughtProducts->add($bp);    
+    $transaction->MemberCards->add($card);    
+    $card->save();
+    
+    return $card;
+  }
 
   public function listCampaigns()
   {
@@ -12,6 +56,7 @@ class CampaignService
   {
     $campaign = new PromoCampaign();
     $campaign->name = $campaign_name;
+    $campaign->expiration = date('Y-m-d', strtotime('+1 year'));
     $campaign->save();
     
     return $campaign;

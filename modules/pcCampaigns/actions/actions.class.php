@@ -5,14 +5,18 @@ require_once dirname(__FILE__).'/../lib/pcCampaignsGeneratorHelper.class.php';
 
 class pcCampaignsActions extends autoPcCampaignsActions
 {
+  
   public function executeCreate(sfWebRequest $request)
   {
     parent::executeCreate($request);
     
-    $this->promo_campaign->PromoCodes = $this->getCampaignService()->generateCodes($this->promo_campaign, 6, $this->promo_campaign->codes_count);
-    $this->promo_campaign->save();
-    
-    $this->redirect(array('sf_route' => 'pc_campaigns_show', 'sf_subject' => $this->promo_campaign));
+    if ( $this->form->isValid() )
+    {
+      $this->promo_campaign->PromoCodes = $this->getCampaignService()->generateCodes($this->promo_campaign, 6, $this->promo_campaign->codes_count);
+      $this->promo_campaign->save();
+      
+      $this->redirect(array('sf_route' => 'pc_campaigns_show', 'sf_subject' => $this->promo_campaign));  
+    }
   }
   
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -40,6 +44,7 @@ class pcCampaignsActions extends autoPcCampaignsActions
     else
     {
       $this->getUser()->setFlash('error', 'The item has not been saved due to some errors.', false);
+      $this->setTemplate('new');
     }
   }
   

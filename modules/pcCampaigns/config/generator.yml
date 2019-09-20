@@ -16,13 +16,16 @@ generator:
       fields:
         expiration: { label: Expire at }
       list:
-        display: [name, expiration, MemberCardType]
+        display: [name, expiration, MemberCardType, _show_count_promo_codes]
       filter: ~
       form: ~
       new:
         title: New Campaign
+        display: 
+          Campaign: [name, expiration, card_type_id, card_price_id, codes_count]
+          Codes:    [_show_promo_codes]
       edit: ~
       show:
         display:
-          Campaign: [name, expiration, MemberCardType]
+          Campaign: [name, expiration, MemberCardType, Price]
           Codes:    [_show_promo_codes]

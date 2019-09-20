@@ -7,3 +7,4 @@ default:
         - %paths.base%/../features
       contexts:
         - EvePromoCodeContext
+        - EveApiPromoCodeContext

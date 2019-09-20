@@ -8,28 +8,13 @@ use PHPUnit\Framework\TestCase;
 /**
  * Defines application features from the specific context.
  */
-class EvePromoCodeContext extends TestCase implements Context
+class EvePromoCodeContext extends baseEveContext
 {
   const CAMPAIGN_SERVICE = 'campaign_service';
   
   private $campaigns = [];
   private $codes = [];
   private $error = '';
-
-  /**
-   * Initializes context.
-   *
-   * Every scenario gets its own context instance.
-   * You can also pass arbitrary arguments to the
-   * context constructor through behat.yml.
-   */
-  public function __construct()
-  {
-    require_once(dirname(__FILE__).'/../../../../config/ProjectConfiguration.class.php');
-
-    $configuration = ProjectConfiguration::getApplicationConfiguration('default', 'dev', true);
-    sfContext::createInstance($configuration);
-  }
 
   private function getContext()
   {
@@ -92,6 +77,7 @@ class EvePromoCodeContext extends TestCase implements Context
       $campaign->name = $row['name'];
       $campaign->expiration = $row['expiration'];
       $campaign->card_type_id = $row['card_type_id'];
+      $campaign->card_price_id = $row['card_price_id'];
       $campaign->save();
       
       $this->campaigns[] = $campaign;
