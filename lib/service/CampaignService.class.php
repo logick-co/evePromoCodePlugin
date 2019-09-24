@@ -37,6 +37,7 @@ class CampaignService
     $bp = new BoughtProduct;
     $bp->Declination = $campaign->MemberCardType->ProductDeclination;
     $bp->Price = $campaign->Price;
+    $bp->value = $campaign->Price->value;
     $bp->Transaction = $transaction;
     $bp->Transaction->contact_id = $transaction->contact_id;
     

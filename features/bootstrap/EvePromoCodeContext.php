@@ -11,28 +11,14 @@ use PHPUnit\Framework\TestCase;
 class EvePromoCodeContext extends baseEveContext
 {
   const CAMPAIGN_SERVICE = 'campaign_service';
+  const CAMPAIGN_NAME = 'PROMOCODES-TEST';
   
-  private $campaigns = [];
-  private $codes = [];
-  private $error = '';
-
-  private function getContext()
-  {
-    return sfContext::getInstance();
-  }
-  
-  private function getCampaignService()
-  {
-    return $this->getContext()->getContainer()->get(EvePromoCodeContext::CAMPAIGN_SERVICE);
-  }
-
   /**
-   * @Given aucune OP n'existe
+   * @Given une OP existe
    */
-  public function aucuneOpNexiste()
+  public function uneOpExiste()
   {
-    $this->getCampaignService()->removeCampaign('PROMOCODES-TEST');
-    $this->campaigns = [];
+    $this->createCampaign(self::CAMPAIGN_NAME);
   }
 
   /**
@@ -65,25 +51,6 @@ class EvePromoCodeContext extends baseEveContext
   public function leNomDeLopEst($campaign_name)
   {
       $this->assertEquals($campaign_name, $this->campaigns[0]->name);
-  }
-
-  /**
-   * @Given l'op suivante:
-   */
-  public function opSuivante(TableNode $table)
-  {
-    foreach ($table as $row) {
-      $campaign = new PromoCampaign();
-      $campaign->name = $row['name'];
-      $campaign->expiration = $row['expiration'];
-      $campaign->card_type_id = $row['card_type_id'];
-      $campaign->card_price_id = $row['card_price_id'];
-      $campaign->save();
-      
-      $this->campaigns[] = $campaign;
-    }
-    
-    $this->codes = [];
   }
 
   /**

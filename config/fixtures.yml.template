@@ -1,0 +1,9 @@
+fixtures:
+  base_uri: http://e-venement               # Your e-venement uri
+  api_auth: 
+    client_id: CLIENT_ID                    # Your client_id used to connect to the api
+    client_secret: CLIENT_SECRET            # Your client_secret used to connect to the api
+  campaign:
+    card_type_id: 1                         # Your member card type id used with promo codes
+    card_price_id: 1                        # Your member card product price id used with promo codes
+  payment_method_id: 1                      # Your payment method id used by the api

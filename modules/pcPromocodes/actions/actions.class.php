@@ -41,9 +41,13 @@ class pcPromocodesActions extends apiActions
     
     if ( $valid_code )
     {
-      $this->getMyService()->addMemberCard($transaction, $valid_code->PromoCampaign);
-      
-      $activated_code = $this->getMyService()->activateCode($valid_code, $transaction->Contact);
+      try {
+        $this->getMyService()->addMemberCard($transaction, $valid_code->PromoCampaign);
+        
+        $activated_code = $this->getMyService()->activateCode($valid_code, $transaction->Contact);
+      } catch(\Exception $e) {
+        throw new liApiException($e->getMessage());
+      }
       
       $result = $this->createJsonResponse([
         "code" => '200',
