@@ -10,12 +10,22 @@ generator:
     route_prefix:          pc_campaigns
     with_doctrine_route:   true
     actions_base_class:    sfActions
+    i18n_catalogue:        pc_campaigns
 
     config:
       actions:
       fields:
         expiration: { label: Expire at }
+        show_count_promo_codes: { label: Codes count }
+        MemberCardType: { label: Card type }
       list:
+        object_actions:
+          _show: ~
+          _edit: ~
+          export:
+            action: export
+            label: Export
+            ui-icon: arrowstop-1-s
         display: [name, expiration, MemberCardType, _show_count_promo_codes]
       filter: ~
       form: ~

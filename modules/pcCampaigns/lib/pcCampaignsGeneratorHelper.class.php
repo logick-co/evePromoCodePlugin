@@ -10,4 +10,12 @@
  */
 class pcCampaignsGeneratorHelper extends BasePcCampaignsGeneratorHelper
 {
+  public function linkToExport($object, $params)
+{
+  return '<li class="sf_admin_action_export">'.link_to(
+    '<span class="ui-icon ui-icon-arrowstop-1-s"></span>'.__($params['label'], array(), 'sf_admin'), 
+    'pcCampaigns/export?id=' . $object->id, 
+    $params['params'])
+  .'</li>';
+}
 }

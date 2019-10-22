@@ -10,4 +10,10 @@
  */
 abstract class PluginPromoCampaignFormFilter extends BasePromoCampaignFormFilter
 {
+  public function setup()
+  {
+    parent::setup();
+    
+    $this->widgetSchema->getFormFormatter()->setTranslationCatalogue('pc_campaigns');
+  }
 }

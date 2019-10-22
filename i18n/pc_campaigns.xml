@@ -8,6 +8,78 @@
         <source>Promotional campaigns</source>
         <target>Campagnes promotionnelles</target>
       </trans-unit>
+      <trans-unit id="2">
+        <source>promo-codes-campaign</source>
+        <target>codes-promo-campagne</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>PcCampaigns List</source>
+        <target>Liste des campagnes</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>PcCampaigns</source>
+        <target>Campagnes promotionnelles</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Expire at</source>
+        <target>Expiration</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Member card type</source>
+        <target>Carte d'abonnement</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Codes count</source>
+        <target>Nombre de codes</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>Card type</source>
+        <target>Type d'abonnement</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>Card price</source>
+        <target>Tarif de l'abonnement</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <source>from</source>
+        <target>du</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>to</source>
+        <target>au</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>View PcCampaigns</source>
+        <target>Campagne promotionnelle</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <source>Codes list</source>
+        <target>Liste de codes</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>Campaign</source>
+        <target>Campagne</target>
+      </trans-unit>
+      <trans-unit id="15">
+        <source>Account</source>
+        <target>Compte</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <source>Export</source>
+        <target>Exporter</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <source>Edit PcCampaigns</source>
+        <target>Modifier une campagne</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <source>New Campaign</source>
+        <target>Créer une campagne</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

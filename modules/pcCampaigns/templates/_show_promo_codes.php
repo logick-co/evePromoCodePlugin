@@ -1,13 +1,13 @@
 <div class="sf_admin_list ui-grid-table ui-widget ui-corner-all ui-helper-reset ui-helper-clearfix">
   <table>
     <caption class="fg-toolbar ui-widget-header ui-corner-top">
-      <h2><span class="ui-icon ui-icon-triangle-1-s"></span><?php echo __('Codes list') ?></h2>
+      <h2><span class="ui-icon ui-icon-triangle-1-s"></span><?php echo __('Codes list', [], 'pc_campaigns') ?></h2>
     </caption>
     <thead class="ui-widget-header">
       <tr>
-        <th class="sf_admin_date sf_admin_list_th_code ui-state-default ui-th-column">Code</th>
-        <th class="sf_admin_text sf_admin_list_th_account ui-state-default ui-th-column">Account</th>
-        <th class="sf_admin_text sf_admin_list_th_activation ui-state-default ui-th-column">Activation</th>
+        <th class="sf_admin_date sf_admin_list_th_code ui-state-default ui-th-column"><?php echo __('Code') ?></th>
+        <th class="sf_admin_text sf_admin_list_th_account ui-state-default ui-th-column"><?php echo __('Account') ?></th>
+        <th class="sf_admin_text sf_admin_list_th_activation ui-state-default ui-th-column"><?php echo __('Activation') ?></th>
       </tr>
     </thead>
     <tbody>

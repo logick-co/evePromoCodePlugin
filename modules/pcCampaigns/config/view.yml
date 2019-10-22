@@ -1,3 +1,9 @@
 all:
-  javascripts: []
+  javascripts: [/evePromoCodePlugin/js/campaigns.js]
   stylesheets: [/evePromoCodePlugin/css/campaigns.css]
+
+exportSuccess:
+  has_layout: false
+  http_metas:
+    content-type: text/comma-separated-values
+    content-disposition: attachment; filename=promocodes.csv

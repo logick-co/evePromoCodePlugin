@@ -6,6 +6,47 @@ require_once dirname(__FILE__).'/../lib/pcCampaignsGeneratorHelper.class.php';
 class pcCampaignsActions extends autoPcCampaignsActions
 {
   
+  public function executeExport(sfWebRequest $request)
+  {
+    $this->getContext()->getConfiguration()->loadHelpers('I18N');
+    
+    $campaign_id = intval($request->getParameter('id'));
+    $codes = Doctrine::getTable('PromoCode')->createQuery('c')
+      ->innerJoin('c.PromoCampaign ca')
+      ->leftJoin('c.Account a')
+      ->select('ca.name, c.code, c.activation_date, a.email as contact')
+      ->andWhere('c.campaign_id = ?', $campaign_id)
+      ->fetchArray()
+    ;
+    
+    $this->codes = [];
+    $campaign_name = sprintf('%s-%s.csv', __('promo-codes-campaign', [], 'pc_campaigns'), strtolower($codes[0]['PromoCampaign']['name']));
+    
+    foreach ($codes as $key => $code)
+    {
+      $this->codes[$key] = [
+        'campaign' => $code['PromoCampaign']['name'],
+        'code' => $code['code'],
+        'contact' => $code['contact'],
+        'activation' => $code['activation_date']
+      ];
+    }
+    
+    $this->format = false;
+    
+    $this->getResponse()->setHttpHeader('Content-Disposition', 'attachment; filename="' . $campaign_name . '"');
+    
+    if ( !$request->hasParameter('debug') )
+    {
+      sfConfig::set('sf_web_debug', false);
+    }
+    else
+    {
+      $this->getResponse()->sendHttpHeaders();
+      $this->setLayout('layout');
+    }
+  }
+  
   public function executeCreate(sfWebRequest $request)
   {
     parent::executeCreate($request);
