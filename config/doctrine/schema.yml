@@ -3,6 +3,8 @@ PromoCampaign:
   actAs:
     Timestampable: ~
   columns:
+    title:
+      type: string(255)
     name:
       type: string(255)
       notnull: true
