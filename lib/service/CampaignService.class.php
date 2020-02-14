@@ -32,7 +32,7 @@ class CampaignService
     $card->member_card_type_id = $campaign->card_type_id;
     $card->contact_id = $transaction->contact_id;
     $card->active = false;
-    $card->detail = $campaign->name;
+    $card->detail = $campaign->title;
     
     $bp = new BoughtProduct;
     $bp->Declination = $campaign->MemberCardType->ProductDeclination;

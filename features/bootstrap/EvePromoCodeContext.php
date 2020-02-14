@@ -12,13 +12,14 @@ class EvePromoCodeContext extends baseEveContext
 {
   const CAMPAIGN_SERVICE = 'campaign_service';
   const CAMPAIGN_NAME = 'PROMOCODES-TEST';
+  const CAMPAIGN_TITLE = 'Campaign to test the api';
   
   /**
    * @Given une OP existe
    */
   public function uneOpExiste()
   {
-    $this->createCampaign(self::CAMPAIGN_NAME);
+    $this->createCampaign(self::CAMPAIGN_NAME, self::CAMPAIGN_TITLE);
   }
 
   /**

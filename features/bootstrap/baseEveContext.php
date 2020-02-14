@@ -55,7 +55,7 @@ class baseEveContext extends TestCase implements Context
     return null;
   }
   
-  protected function createCampaign($name)
+  protected function createCampaign($name, $title)
   {
     $this->getCampaignService()->removeCampaign($name);
 
@@ -63,6 +63,7 @@ class baseEveContext extends TestCase implements Context
 
     $campaign = new PromoCampaign();
     $campaign->name = $name;
+    $campaign->title = $title;
     $campaign->expiration = date('Y-m-d H:i:s', strtotime('+1 month'));
     $campaign->card_type_id = $fixtures['card_type_id'];
     $campaign->card_price_id = $fixtures['card_price_id'];

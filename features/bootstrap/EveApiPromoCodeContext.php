@@ -22,6 +22,7 @@ class EveApiPromoCodeContext extends baseEveContext
   const URL_ACTIVATION = self::URL_CART . '/%d/promocodes/activate';
   const URL_SHOW_CART = self::URL_CART. '/%d';
   const CAMPAIGN_NAME = 'PROMOCODES-TEST';
+  const CAMPAIGN_TITLE = 'Campaign to test the api';
   const EMAIL = 'tahani@test';
   
   private $client;
@@ -45,7 +46,7 @@ class EveApiPromoCodeContext extends baseEveContext
    */
   public function uneOpEstCreeeAvecCode($count)
   {
-    $this->createCampaign(self::CAMPAIGN_NAME);
+    $this->createCampaign(self::CAMPAIGN_NAME, self::CAMPAIGN_TITLE);
     
     $this->codes = $this->getCampaignService()->generateCodes($this->campaigns[0], 6, $count);
     $this->campaigns[0]->PromoCodes = $this->codes;

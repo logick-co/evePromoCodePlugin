@@ -18,6 +18,8 @@ generator:
         expiration: { label: Expire at }
         show_count_promo_codes: { label: Codes count }
         MemberCardType: { label: Card type }
+        title: { label: Name }
+        name: { label: Code }
       list:
         object_actions:
           _show: ~
