@@ -20,7 +20,7 @@ class evePromoCodePluginConfiguration extends sfPluginConfiguration
             'app' => 'tck',
             'route' => 'promo_campaigns/index'
           ),
-          'credential' => array(),
+          'credentials' => array('pr-card-promo-edit'),
           'i18n'  => 'pc_campaigns',
         ),
       ),
